@@ -27,6 +27,48 @@
 .App-link {
   color: #61dafb;
 }
+.mint{
+  background-image: url("../public/background.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+.img-display-before {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.img-display-after {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+}   
+.image-upload-input {
+  display: none;
+}
+a {
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
 
 @keyframes App-logo-spin {
   from {
