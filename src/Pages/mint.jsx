@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import tokenList from '../Components/tokenList.json'
 import {activeChainId} from '../Components/chainConfig.ts'
 import Navbar from "../Components/Navbar";
+import { Star, Start } from "@mui/icons-material";
 
 export default function Mint() {
 //   const { data: signer } = useSigner();
@@ -45,244 +46,89 @@ export default function Mint() {
     const reader = new FileReader();
     setImage(file);
   };
-//   function modifyToken(i) {
-//     setTokenOne(tokenList[activeChainId.toString()][i]);
-//     setIsOpen(false);
-//   }
-
-//   const toastId = useRef(null);
-//   const mintYourNft = async () => {
-//     setLoader(true);
-//     if (!name && !description && !link && !supply && !image) {
-//       alert("Please fill all the fields");
-//       setLoader(false);
-//       return;
-//     }
-//     toastId.current = toast("⏳ NFT is Uploading", {
-//       theme: "dark",
-//       autoClose: 5000,
-//       closeButton: true
-//     });
-//     let metadataURI = await mintNFT(name, description, link, supply, image);
-//     toast.update(toastId.current, {
-//       render:"🦄 NFT is Minting",
-//       type: toast.TYPE.INFO,
-//       theme: "dark",
-//       autoClose: 5000,
-//       closeButton: true
-//     });
-//     if (metadataURI) {
-//       let instance = await getInstance();
-//       let tx = await instance.mintNFT(address, metadataURI);
-//     }
-//     setLoader(false);
-//     toast.update(toastId.current, {
-//       render:"👏 NFT is Minted",
-//       type: toast.TYPE.SUCCESS,
-//       theme: "dark",
-//       autoClose: 5000,
-//       closeButton: true
-//     });
-//   };
 
   
   return (
   <>
-  <Navbar/>
     <Box
     className="mint"
-      sx={{
+    sx={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
-      }}
+        alignItems: "start",
+    }}
     >
-      {/* <Head/> */}
-      <Stack gap="32px" sx={{ maxWidth: "550px", padding: "12px" }}>
-        <Stack>
-          <Typography variant="h4" color="white">
-            Mint Your NFT
-          </Typography>
-          <Typography variant="body2" color="white">
-            * Required Fields
-          </Typography>
-        </Stack>
-        <Stack gap="8px">
-          <Typography variant="h6" color="white">
-            Image, Video, Audio, or 3D Model
-          </Typography>
-          <Typography variant="body2" color="white">
-            File types supported: JPEG,JPG,PNG,GIF :100 MB
-          </Typography>
-          {/* // Image Upload Section */}
-          <div className="box-decoration mt4">
-            <div onClick={handleClick} style={{ cursor: "pointer" }}>
-              {image ? (
-                <img
-                  src={URL.createObjectURL(image)}
-                  alt="upload NFT"
-                  className="img-display-after"
-                />
-              ) : (
-                <img
-                  src="./imgplaceholder.jpg"
-                  alt="upload NFT"
-                  className="img-display-before"
-                />
-              )}
-
-              <input
-                id="image-upload-input"
-                accept=".jpeg,.jpg,.png,.gif"
-                type="file"
-                onChange={handleImageChange}
-                ref={hiddenFileInput}
-                style={{ display: "none" }}
-              />
-            </div>
-          </div>
-        </Stack>
-        <Stack gap="8px">
-          <Typography variant="h6" color="white">
-            Name*
-          </Typography>
-          <TextField
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Item Name"
-            sx={{
-              input: { color: "white" },
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldset ": {
-                  borderColor: "white",
-                },
-                "& fieldset ": {
-                  borderColor: "white",
-                },
-                "&:hover fieldset": {
-                  borderColor: "white",
-                },
-              },
-            }}
-          />
-        </Stack>
-        <Stack gap="8px">
-          <Typography variant="h6" color="white">
-            External Link
-          </Typography>
-          <Typography variant="body2" color="white">
-            OpenSea will include a link to this URL on this item's detail page,
-            so that users can click to learn more about it. You are welcome to
-            link to your own webpage with more details.
-          </Typography>
-          <TextField
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
-            placeholder="http://yoursiteURL"
-            sx={{
-              input: { color: "white" },
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldset ": {
-                  borderColor: "white",
-                },
-                "& fieldset ": {
-                  borderColor: "white",
-                },
-                "&:hover fieldset": {
-                  borderColor: "white",
-                },
-              },
-            }}
-          />
-        </Stack>
-        <Stack gap="8px">
-          <Typography variant="h6" color="white">
-            Description
-          </Typography>
-          <Typography variant="body2" color="white">
-            The description will be included on the item's detail page
-            underneath its image. Markdown syntax is supported.
-          </Typography>
-          <TextField
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            multiline
-            minRows={3}
-            maxRows={5}
-            inputProps={{ style: { color: "white" } }}
-            placeholder="Prvoide a detailed description about your item."
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldset ": {
-                  borderColor: "white",
-                },
-                "& fieldset ": {
-                  borderColor: "white",
-                },
-                "&:hover fieldset": {
-                  borderColor: "white",
-                },
-              },
-            }}
-          />
-        </Stack>
-        <Stack gap="8px">
-          <Typography variant="h6" color="white">
-            Supply
-          </Typography>
-          <Typography variant="body2" color="white">
-            The number of items that can be minted. No gas cost to you!
-          </Typography>
-          <TextField
-            value={supply}
-            onChange={(e) => setSupply(e.target.value)}
-            sx={{
-              input: { color: "white" },
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldset ": {
-                  borderColor: "white",
-                },
-                "& fieldset ": {
-                  borderColor: "white",
-                },
-                "&:hover fieldset": {
-                  borderColor: "white",
-                },
-              },
-            }}
-          />
-        </Stack>
-        <Stack gap="8px">
-          <Typography variant="h6" color="white">
-            Blockchain
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              border: "2px solid white",
-              padding: "8px",
-              borderRadius: "8px",
-            }}
-          >
-            <Stack direction="row" gap="16px" alignItems="center">
-              <img src={tokenOne.img} alt="assetOneLogo" className="mintimg" />
-              <Typography variant="body1" color="white">
-                Polygon Chain
-              </Typography>
-            </Stack>
-          </Box>
-        </Stack>
-        <Button
-          variant="contained"
-          // onClick={mintYourNft}
-          style={{ background: "white", color: "black", margin: "28px 0px" }}
-        >
-          Create
-        </Button>
-      </Stack>
+      <Box  sx={{width:{sm:"100vh", md:"115vh"}}}>
+          <Stack gap="32px">
+            <Navbar/>
+            <Typography variant="h4" sx={{color:"#ffffff", fontSize:{xs: "1.25rem" ,md:"3.25rem"}}}>
+              Multi-chain <br/>
+              Non-custodial<br/>
+              Privacy-preserving
+            </Typography>
+            <Typography variant="p" sx={{color:"#ffffff", fontSize:{xs: "10px" ,md:"16px"}, fontWeight:"600", width:{xs:"200px" ,md:"600px"}}}>
+              Cyclone is a protocol that applies zkSNARKs to enable transactional privacy by breaking the on-chain link between depositor and recipient addresses.
+            </Typography>
+            <Box>
+              <Typography sx={{color:"#33DCD5"}} marginBottom="10px">Launch app on</Typography>
+              <Stack gap="10px" sx={{flexDirection: {xs:"column", sm:"row", md:"row"}}}>
+                <Box component="span" className="coin">
+                  <img src="https://cyclone.xyz/images/home/token_eth.png" alt="etherium" width="25px" height="25px"/>
+                  <Typography variant="h6" className="coinname">ETH</Typography> 
+                </Box>
+                <Box component="span" className="coin">
+                  <img src="https://cyclone.xyz/images/home/token_bnb.png" alt="etherium" width="25px" height="25px"/>
+                  <Typography variant="h6" className="coinname">BSC</Typography> 
+                </Box>
+                <Box component="span" className="coin">
+                  <img src="https://cyclone.xyz/images/home/token_iotx.png" alt="etherium" width="25px" height="25px"/>
+                  <Typography variant="h6" className="coinname">IoTeX</Typography> 
+                </Box>
+                <Box component="span" className="coin">
+                  <img src="https://cyclone.xyz/images/home/matic_s.svg" alt="etherium" width="25px" height="25px"/>
+                  <Typography variant="h6" className="coinname">Polygon</Typography> 
+                </Box> 
+              </Stack>
+            </Box>
+            <Box component="span" className="links">
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/analysis.png" alt="analysis" width="20px" height="20px"/>
+              </a>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/twitter.png" alt="twitter" width="20px" height="20px"/>
+              </a>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/tele.png" alt="telegram" width="20px" height="20px"/>
+              </a>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/medium.png" alt="medium" width="20px" height="20px"/>
+              </a>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/defi.png" alt="defi" width="20px" height="20px"/>
+              </a>
+              <div className="line"></div>
+              <a className="lang">
+                <img src="https://cyclone.xyz/images/EN.png" alt="defi" width="20px" height="20px"/>
+              </a>
+            </Box>
+            <Typography sx={{color:"#33DCD5", fontSize:"25px"}}>Token Price: $0.0000</Typography>
+            <Typography variant="h3" sx={{color:"#ffffff", fontSize:"20px", fontWeight: "600"}}>EXCHANGES</Typography>
+            <Box display="flex" gap="30px" sx={{flexDirection:{xs:"column", sm:"row", md:"row"}}}>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/uiniswap.png" alt="uniswap" width="130px" height="30px"/>
+              </a>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/pancakeswap_t.png" alt="pancakeswap" width="130px" height="30px"/>
+              </a>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/mimo.png" alt="mimo" width="130px" height="30px"/>
+              </a>
+              <a href="#">
+                <img src="https://cyclone.xyz/images/home/quickswap_t.png" alt="quickswap" width="130px" height="30px"/>
+              </a>
+            </Box>
+          </Stack>
+      </Box>
     </Box>
   </>
   );

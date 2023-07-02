@@ -8,45 +8,35 @@ export default function Navbar(){
     const [open, setOpen] = useState(false);
     return(
         <>
-   <AppBar elevation={0}  sx={{
+   <AppBar elevation={0} color="transparent" sx={{
     position:"relative",
     top:"0",left:"0",
-        padding:"10px 30px",
-        flexDirection:"row",justifyContent:"space-between",
-        background:"rgb(17,17,17)",
-        boxShadow:"0px 3px 7px black",
+        padding:"30px 0px",
+        flexDirection:"row",justifyContent:"space-around",
         
    }}>
-    <Stack direction="row" alignItems="center" gap="10px">
-    <img src="./cyclone.png" alt="logo" width={100} />
-    </Stack>
-    <Box sx={{display:{xs:"none",md:"flex"},flexDirection:"row",gap:"30px",alignItems:"center"}}>
-       <Typography variant="nav" >
+    <Box sx={{display:{md:"flex"},flexDirection:"row",gap:"70px",alignItems:"center"}}>
+        <Stack direction="row" alignItems="center" gap="10px">
+        <img src="./cyclone.png" alt="logo" width={150} />
+        </Stack>
+       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
           <a href="#">COMMUNITY</a>
        </Typography>
-       <Typography variant="nav" >
+       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
           <a href="#">GITHUB</a>
        </Typography>
-       <Typography variant="nav" >
+       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
           <a href="#">DOCS</a>
        </Typography>
-       <Typography variant="nav" >
+       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
           <a href="#">DAO</a>
        </Typography>
-       <Typography variant="nav" >
+       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
           <a href="#">STATS</a>
        </Typography>
-       <Typography variant="nav" >
+       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
           <a href="#">FORUM</a>
        </Typography>
-        <Button style={{
-            padding:"10px",
-            color:"white",
-            border:"2px solid white",
-            fontFamily: "DM Mono"
-        }}>
-          <a href="#">ENTER MINT</a>
-        </Button>
     </Box>
     <IconButton sx={{ display: { md: "none" } }}>
           <FormatAlignLeftIcon onClick={() => setOpen(true)} sx={{color:"white"}}  />
@@ -102,18 +92,9 @@ export default function Navbar(){
             </ListItem>
             <ListItem>
             <Typography variant="nav" >
-          <a href="#" onClick={()=>setOpen(false)} >FORUM</a>
-       </Typography>
+            <a href="#" onClick={()=>setOpen(false)} >FORUM</a>
+            </Typography>
             </ListItem>
-           <ListItem>
-           <Button style={{
-            padding:"10px 16px",
-            color:"white",
-            border:"2px solid white",
-        }}>
-          <a href="#">ENTER MINT</a>
-        </Button>
-           </ListItem>
           </List>
     </SwipeableDrawer>
    </AppBar>
