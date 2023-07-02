@@ -8,35 +8,43 @@ export default function Navbar(){
     const [open, setOpen] = useState(false);
     return(
         <>
-   <AppBar elevation={0} color="transparent" sx={{
+   <AppBar elevation={0}  sx={{
     position:"relative",
     top:"0",left:"0",
-        padding:"30px 0px",
-        flexDirection:"row",justifyContent:"space-around",
-        
+        padding:"10px 0",
+        flexDirection:"row",justifyContent:"space-between",   
+        background:"none" 
    }}>
-    <Box sx={{display:{md:"flex"},flexDirection:"row",gap:"70px",alignItems:"center"}}>
-        <Stack direction="row" alignItems="center" gap="10px">
-        <img src="./cyclone.png" alt="logo" width={150} />
-        </Stack>
-       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
-          <a href="#">COMMUNITY</a>
+    <Stack direction="row" alignItems="center" gap="10px">
+      <a href="/"><img src="cyclone.png" alt="logo" width={140} /></a>
+    </Stack>
+    <Box sx={{display:{xs:"none",md:"flex"},flexDirection:"row",gap:"30px",alignItems:"center"}}>
+       <Typography variant="nav" >
+          <a href="#">Community</a>
        </Typography>
-       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
-          <a href="#">GITHUB</a>
+       <Typography variant="nav" >
+          <a href="#">Github</a>
        </Typography>
-       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
-          <a href="#">DOCS</a>
+       <Typography variant="nav" >
+          <a href="#">Docs</a>
        </Typography>
-       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
-          <a href="#">DAO</a>
+       <Typography variant="nav" >
+          <a href="#">Dao</a>
        </Typography>
-       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
-          <a href="#">STATS</a>
+       <Typography variant="nav" >
+          <a href="#">Stats</a>
        </Typography>
-       <Typography variant="nav" sx={{display:{xs:"none", md:"flex"}}}>
-          <a href="#">FORUM</a>
+       <Typography variant="nav" >
+          <a href="#">Forum</a>
        </Typography>
+        <Button style={{
+            padding:"10px",
+            color:"white",
+            border:"2px solid white",
+            fontSize:"16px"
+        }}>
+          <a href="/mint">ENTER MINT</a>
+        </Button>
     </Box>
     <IconButton sx={{ display: { md: "none" } }}>
           <FormatAlignLeftIcon onClick={() => setOpen(true)} sx={{color:"white"}}  />
@@ -67,34 +75,44 @@ export default function Navbar(){
           <List>
             <ListItem>
             <Typography variant="nav" >
-          <a href="#" onClick={()=>setOpen(false)} >COMMUNITY</a>
+          <a href="#" onClick={()=>setOpen(false)} >Community</a>
        </Typography>
             </ListItem>
             <ListItem>
             <Typography variant="nav" >
-          <a href="#" onClick={()=>setOpen(false)} >GITHUB</a>
+          <a href="#" onClick={()=>setOpen(false)} >Github</a>
        </Typography>
             </ListItem>
             <ListItem>
             <Typography variant="nav" >
-          <a href="#" onClick={()=>setOpen(false)} >DOCS</a>
+          <a href="#" onClick={()=>setOpen(false)} >Docs</a>
        </Typography>
             </ListItem>
             <ListItem>
             <Typography variant="nav" >
-          <a href="#" onClick={()=>setOpen(false)} >DAO</a>
+          <a href="#" onClick={()=>setOpen(false)} >Dao</a>
        </Typography>
             </ListItem>
             <ListItem>
             <Typography variant="nav" >
-          <a href="#" onClick={()=>setOpen(false)} >STATS</a>
+          <a href="#" onClick={()=>setOpen(false)} >Stats</a>
        </Typography>
             </ListItem>
             <ListItem>
             <Typography variant="nav" >
-            <a href="#" onClick={()=>setOpen(false)} >FORUM</a>
-            </Typography>
+          <a href="#" onClick={()=>setOpen(false)} >Forum</a>
+       </Typography>
             </ListItem>
+           <ListItem>
+           <Button style={{
+            padding:"10px 16px",
+            color:"white",
+            border:"2px solid white",
+            fontSize:"16px"
+        }}>
+          <a href="/mint">ENTER MINT</a>
+        </Button>
+           </ListItem>
           </List>
     </SwipeableDrawer>
    </AppBar>
